@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quotes Slider</title>
+    <link
+    href="https://cdn.jsdelivr.net/npm/remixicon@4.7.0/fonts/remixicon.css"
+    rel="stylesheet"/>
+    <style>
+        *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+body{
+    background: #000;
+}
+
+/* Slider */
+.slider{
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Background Image */
+#slide{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: fade 1s ease-in-out;
+}
+
+/* Fade animation */
+@keyframes fade{
+    from{opacity: 0.4;}
+    to{opacity: 1;}
+}
+
+/* Dark Gradient Overlay */
+.overlay{
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.3),
+        rgba(0,0,0,0.7)
+    );
+}
+
+/* Quote Box */
+.quote-box{
+    position: absolute;
+    bottom: 18%;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 750px;
+    padding: 30px 40px;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    text-align: center;
+    color: #fff;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+.quote-box p{
+    font-size: 26px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.quote-box h4{
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    opacity: 0.85;
+}
+
+/* Buttons */
+.slider-btns{
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    padding: 0 25px;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+}
+
+.slider-btns button{
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    border: none;
+    font-size: 22px;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    cursor: pointer;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+}
+
+.slider-btns button:hover{
+    background: white;
+    color: #111;
+    transform: scale(1.2);
+}
+
+/* Responsive */
+@media(max-width:768px){
+    .quote-box{
+        width: 90%;
+        bottom: 12%;
+        padding: 22px;
+    }
+
+    .quote-box p{
+        font-size: 20px;
+    }
+}
+
+@media(max-width:576px){
+    .slider{
+        height: 55vh;
+    }
+
+    .quote-box p{
+        font-size: 17px;
+    }
+
+    .slider-btns button{
+        width: 42px;
+        height: 42px;
+        font-size: 16px;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+<section class="slider">
+    <img id="slide" alt="slider">
+
+    <!-- Gradient Overlay -->
+    <div class="overlay"></div>
+
+    <!-- Quote Box -->
+    <div class="quote-box">
+        <p id="quote"></p>
+        <h4 id="author"></h4>
+    </div>
+
+    <!-- Buttons -->
+    <div class="slider-btns">
+        <button onclick="prevClick()"><i class="ri-arrow-left-s-line"></i></button>
+        <button onclick="nextClick()"><i class="ri-arrow-right-s-line"></i></button>
+    </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
